@@ -23,7 +23,16 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      "/api": "https://tic-tac-toe-backend-hta5.onrender.com",
+      "/api": {
+        target: "http://localhost:7777",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/socket.io": {
+        target: "http://localhost:7777",
+        ws: true, // Proxy WebSocket as well
+        secure: false,
+      },
     },
   },
   optimizeDeps: {

@@ -254,7 +254,17 @@ const GameBoard = () => {
           <div className="space-y-2">
             <Trophy className="w-8 h-8 text-yellow-500 mx-auto" />
             <h2 className="text-2xl font-bold text-gray-800">
-              Player {winner} Wins!
+              Player {winner} Wins!{" ( "}
+              <span>
+                {currentPlayer === "X"
+                  ? game.isOnline
+                    ? game.players[0].firstName
+                    : game.players[0]
+                  : game.isOnline
+                  ? game.players[1].firstName
+                  : game.players[1]}
+              </span>
+              {" )"}
             </h2>
           </div>
         ) : isDraw ? (
