@@ -21,6 +21,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    proxy: {
+      "/api": "https://tic-tac-toe-backend-hta5.onrender.com",
+    },
+  },
   optimizeDeps: {
     force: true,
     esbuildOptions: {
