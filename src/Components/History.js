@@ -9,14 +9,23 @@ export default function History() {
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get(BACKEND_URL + "/history/view", {
-        withCredentials: true,
-      });
-      setHistory(data.response);
-    })();
+    fetchHistory();
   }, []);
 
+  const fetchHistory = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/history/view`, {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
+        setHistory(response.data.response);
+      } else {
+        console.error("Failed to fetch game history");
+      }
+    } catch (error) {
+      console.error("Error fetching game history:", error);
+    }
+  };
   return (
     <div>
       <h1 className="text-2xl font-bold text-center my-4">Game History</h1>
