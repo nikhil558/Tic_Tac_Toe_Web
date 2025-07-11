@@ -30,12 +30,15 @@ export default function History() {
     <div>
       <h1 className="text-2xl font-bold text-center my-4">Game History</h1>
 
-      {!history ||
-        (history.length === 0 && (
-          <div className="flex justify-center items-center h-64 text-gray-500">
-            Your game history will appear here.
-          </div>
-        ))}
+      {(!history || history.length === 0) && (
+        <div className="flex justify-center items-center h-64 text-gray-500">
+          {!history ? (
+            <span className="loading loading-dots loading-xl"></span>
+          ) : (
+            "Your game history will appear here."
+          )}
+        </div>
+      )}
 
       {history && history.length !== 0 && (
         <div className="h-80 overflow-y-auto no-scrollbar space-y-4">

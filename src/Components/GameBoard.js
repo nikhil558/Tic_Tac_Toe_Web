@@ -256,7 +256,7 @@ const GameBoard = () => {
             <h2 className="text-2xl font-bold text-gray-800">
               Player {winner} Wins!{" ( "}
               <span>
-                {currentPlayer === "X"
+                {winner === "X"
                   ? game.isOnline
                     ? game.players[0].firstName
                     : game.players[0]
